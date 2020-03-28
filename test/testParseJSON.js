@@ -43,4 +43,8 @@ describe('Arrays', () => {
   it('can parse arrays of numbers', () => {
     expectParsesDeepEqual([22, 13, 4])
   })
+
+  it('can parse arrays of numbers and strings', () => {
+    expectParsesDeepEqual([22, 'hello', 'test', 13, 'expect', 4])
+  })
 })

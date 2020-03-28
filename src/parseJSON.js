@@ -22,7 +22,7 @@ function replaceEscapeCharacters(string) {
 function parseArray(jsonString) {
   const itemStrings = jsonString.slice(1, -1).split(',')
   return itemStrings.map((itemString) => {
-    return parseInt(itemString)
+    return parseJSON(itemString)
   })
 }
 

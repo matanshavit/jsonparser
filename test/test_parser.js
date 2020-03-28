@@ -1,9 +1,14 @@
 const chai = require('chai')
+const expect = chai.expect
 
-chai.should()
+const parseJSON = require('../src/parseJSON')
 
-describe('test setup', () => {
-  it('can pass', () => {
-    (1 + 1).should.equal(2)
+describe('Integers', () => {
+  it('can parse a single digit', () => {
+    expect(parseJSON(JSON.stringify(5))).to.equal(5)
+  })
+
+  it('can parse a multiple digits', () => {
+    expect(parseJSON(JSON.stringify(834))).to.equal(834)
   })
 })

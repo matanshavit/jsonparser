@@ -19,6 +19,18 @@ describe('Integers', () => {
 
 describe('Strings', () => {
   it('can parse strings', () => {
-    expectParses('hello')
+    expectParses('Hello')
+  })
+
+  it('can parse strings with numbers in them', () => {
+    expectParses('They had 42 tests')
+  })
+
+  it('can parse strings with quotes in them', () => {
+    expectParses('I said "Hi"')
+  })
+
+  it('can parse strings with backslashes in them', () => {
+    expectParses('\\backslahes!\\')
   })
 })

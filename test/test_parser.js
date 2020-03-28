@@ -16,3 +16,9 @@ describe('Integers', () => {
     expectParses(834)
   })
 })
+
+describe('Strings', () => {
+  it('can parse strings', () => {
+    expectParses('hello')
+  })
+})

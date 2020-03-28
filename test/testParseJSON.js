@@ -35,7 +35,11 @@ describe('Strings', () => {
   })
 
   it('can parse strings with backslashes in them', () => {
-    expectParsesEqual('\\backslahes!\\')
+    expectParsesEqual('\\backslashes!\\')
+  })
+
+  it('can parse strings with arrays in them', () => {
+    expectParsesEqual('[1, 2, 3, "hello"]')
   })
 })
 
@@ -46,5 +50,9 @@ describe('Arrays', () => {
 
   it('can parse arrays of numbers and strings', () => {
     expectParsesDeepEqual([22, 'hello', 'test', 13, 'expect', 4])
+  })
+
+  it('can parse arrays with arrays', () => {
+    expectParsesDeepEqual([['a', 'b', 'c'], [1, 2, 3, 'cat'], 'dog'])
   })
 })

@@ -1,0 +1,8 @@
+{
+  "name": "jsonparser",
+  "version": "1.0.0",
+  "description": "a parser for JSON strings",
+  "repository": "https://github.com/matanshavit/jsonparser",
+  "author": "Matan Shavit <mnshavit@gmail.com>",
+  "license": "MIT"
+}

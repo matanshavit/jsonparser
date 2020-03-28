@@ -4,5 +4,12 @@
   "description": "a parser for JSON strings",
   "repository": "https://github.com/matanshavit/jsonparser",
   "author": "Matan Shavit <mnshavit@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
 }

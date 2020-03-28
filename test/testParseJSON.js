@@ -3,34 +3,44 @@ const expect = chai.expect
 
 const parseJSON = require('../src/parseJSON')
 
-function expectParses(data) {
+function expectParsesEqual(data) {
   expect(parseJSON(JSON.stringify(data))).to.equal(data)
+}
+
+function expectParsesDeepEqual(data) {
+  expect(parseJSON(JSON.stringify(data))).to.eql(data)
 }
 
 describe('Integers', () => {
   it('can parse a single digit', () => {
-    expectParses(5)
+    expectParsesEqual(5)
   })
 
   it('can parse a multiple digits', () => {
-    expectParses(834)
+    expectParsesEqual(834)
   })
 })
 
 describe('Strings', () => {
   it('can parse strings', () => {
-    expectParses('Hello')
+    expectParsesEqual('Hello')
   })
 
   it('can parse strings with numbers in them', () => {
-    expectParses('They had 42 tests')
+    expectParsesEqual('They had 42 tests')
   })
 
   it('can parse strings with quotes in them', () => {
-    expectParses('I said "Hi"')
+    expectParsesEqual('I said "Hi"')
   })
 
   it('can parse strings with backslashes in them', () => {
-    expectParses('\\backslahes!\\')
+    expectParsesEqual('\\backslahes!\\')
+  })
+})
+
+describe('Arrays', () => {
+  it('can parse arrays of numbers', () => {
+    expectParsesDeepEqual([22, 13, 4])
   })
 })

@@ -7,6 +7,9 @@ class Parser {
     if (this.remainder[0] === '[') {
       return this.parseNextArray()
     }
+    if (this.remainder[0] === '{') {
+      return this.parseNextObject()
+    }
     if (this.remainder[0] === '"') {
       return this.parseNextString()
     }
@@ -21,6 +24,20 @@ class Parser {
       result.push(this.parseNextItem())
       nextSeperator = this.remainder[0]
       this.remainder = this.remainder.slice(1)  // remove , or ]
+    }
+    return result
+  }
+
+  parseNextObject() {
+    this.remainder = this.remainder.slice(1)  // remove {
+    var result = {}
+    var nextSeperator = ','
+    while (nextSeperator !== '}') {
+      var key = this.parseNextItem()
+      this.remainder = this.remainder.slice(1)  // remove :
+      result[key] = this.parseNextItem()
+      nextSeperator = this.remainder[0]
+      this.remainder = this.remainder.slice(1)  // remove , or }
     }
     return result
   }

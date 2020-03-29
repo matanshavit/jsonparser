@@ -44,6 +44,10 @@ describe('Strings', () => {
 })
 
 describe('Arrays', () => {
+  it('can parse empty arrays', () => {
+    expectParsesDeep([])
+  })
+
   it('can parse arrays of numbers', () => {
     expectParsesDeep([22, 13, 4])
   })
@@ -54,6 +58,10 @@ describe('Arrays', () => {
 
   it('can parse arrays with arrays', () => {
     expectParsesDeep([['a', 'b', 'c'], [1, 2, 3, 'cat'], 'dog'])
+  })
+
+  it('can parse empty arrays in arrays', () => {
+    expectParsesDeep([[], [1, 2, 3]])
   })
 
   it('can parse arrays with objects', () => {

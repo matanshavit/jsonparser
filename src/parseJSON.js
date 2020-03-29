@@ -19,7 +19,11 @@ class Parser {
   parseNextArray() {
     this.remainder = this.remainder.slice(1)  // remove [
     var result = []
-    var nextSeperator = ','
+    var nextSeperator = this.remainder[0]
+    if (nextSeperator === ']') {
+      this.remainder = this.remainder.slice(1) //remove ]
+      return []
+    }
     while (nextSeperator !== ']') {
       result.push(this.parseNextItem())
       nextSeperator = this.remainder[0]

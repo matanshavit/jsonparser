@@ -105,4 +105,15 @@ describe('Objects', () => {
   it('can parse objects with empty objects as values', () => {
     expectParsesDeep({a:{}, b:{}})
   })
+
+  describe('Performance', () =>  {
+    var obj = {}
+    for (var i = 0; i < 100000; i++) {
+      obj[i] = [1,2,3,{'a':1,'b':2,'c':[3,4,5,'hello']},'hi','hey']
+    }
+    
+    it("should work on a huge data set", function() {
+      expect(parseJSON(JSON.stringify(obj))).to.eql(obj);
+    });
+  });
 })

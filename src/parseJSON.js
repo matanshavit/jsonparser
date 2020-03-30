@@ -23,8 +23,8 @@ class Parser {
     this.unshift(1)  // remove [
     var result = []
     var nextSeperator = this.remainder[0]
-    if (nextSeperator === ']') {
-      this.unshift(1) //remove ]
+    if (nextSeperator === ']') {  // empty array
+      this.unshift(1)  // remove ]
       return []
     }
     while (nextSeperator !== ']') {
@@ -39,8 +39,8 @@ class Parser {
     this.unshift(1)  // remove {
     var result = {}
     var nextSeperator = this.remainder[0]
-    if (nextSeperator === '}') {
-      this.unshift(1) //remove }
+    if (nextSeperator === '}') {  // empty object
+      this.unshift(1)  // remove }
       return {}
     }
     while (nextSeperator !== '}') {
@@ -100,7 +100,6 @@ class Parser {
   parse() {
     return this.parseNextItem()
   }
-
 }
 
 function parseJSON(jsonString) {

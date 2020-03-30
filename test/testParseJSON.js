@@ -79,7 +79,7 @@ describe('Arrays', () => {
   })
 
   it('can parse arrays with objects', () => {
-    expectParsesDeep([{a:1,b:2,c:'hi'},{d:4,e:5,f:[1,2,'hello']}])
+    expectParsesDeep([{a: 1, b: 2, c: 'hi'}, {d: 4,e: 5,f: [1, 2, 'hello']}])
   })
 })
 
@@ -93,12 +93,16 @@ describe('Objects', () => {
   })
 
   it('can parse objects with arrays as values', () => {
-    expectParsesDeep({a:['hi', 1, 2, 3], b:['test', [4, 5, 6]]})
+    expectParsesDeep({a: ['hi', 1, 2, 3], b:['test', [4, 5, 6]]})
   })
 
   it('can parse objects with objects as values', () => {
     expectParsesDeep({
-      a:{b:['test', [4, 5, 6], {a: 1}], c:7}, d:{e:{f:5}}}
+      a: {b:['test', [4, 5, 6], {a: 1}], c: 7}, d: {e: {f: 5}}}
     )
+  })
+
+  it('can parse objects with empty objects as values', () => {
+    expectParsesDeep({a:{}, b:{}})
   })
 })

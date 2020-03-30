@@ -57,19 +57,23 @@ class Parser {
     this.unshift(1)  // remove "
     var result = ''
     while(this.remainder[0] !== '"') {
-      if (
-        this.remainder[0] === '\\' && (
-          this.remainder[1] === '\\' ||
-          this.remainder[1] === '"'
-        )
-      ) {
-        this.unshift(1)  // remove \
-      }
+      this.checkForEscapeSequence()
       result = result + this.remainder[0]
       this.unshift(1)  // remove \ or " (escaped)
     }
     this.unshift(1)  // remove "
     return result
+  }
+
+  checkForEscapeSequence() {
+    if (
+      this.remainder[0] === '\\' && (
+        this.remainder[1] === '\\' ||
+        this.remainder[1] === '"'
+      )
+    ) {
+      this.unshift(1)  // remove \
+    }
   }
 
   parseNextInt() {

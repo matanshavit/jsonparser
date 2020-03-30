@@ -38,7 +38,11 @@ class Parser {
   parseNextObject() {
     this.unshift(1)  // remove {
     var result = {}
-    var nextSeperator = ','
+    var nextSeperator = this.remainder[0]
+    if (nextSeperator === '}') {
+      this.unshift(1) //remove }
+      return {}
+    }
     while (nextSeperator !== '}') {
       var key = this.parseNextItem()
       this.unshift(1)  // remove :
@@ -59,7 +63,7 @@ class Parser {
           this.remainder[1] === '"'
         )
       ) {
-        unshift(1)  // remove \
+        this.unshift(1)  // remove \
       }
       result = result + this.remainder[0]
       this.unshift(1)  // remove \ or " (escaped)

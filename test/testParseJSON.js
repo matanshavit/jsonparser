@@ -84,6 +84,10 @@ describe('Arrays', () => {
 })
 
 describe('Objects', () => {
+  it('can parse empty objects', () => {
+    expectParsesDeep({})
+  })
+
   it('can parse objects', () => {
     expectParsesDeep({a:1, b:2, c:3, 6:7})
   })

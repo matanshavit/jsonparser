@@ -21,6 +21,20 @@ describe('Integers', () => {
   })
 })
 
+describe('Constants', () => {
+  it('can parse true', () => {
+    expectParses(true)
+  })
+
+  it('can parse false', () => {
+    expectParses(false)
+  })
+
+  it('can parse null', () => {
+    expectParses(null)
+  })
+})
+
 describe('Strings', () => {
   it('can parse strings', () => {
     expectParses('Hello')
@@ -52,8 +66,8 @@ describe('Arrays', () => {
     expectParsesDeep([22, 13, 4])
   })
 
-  it('can parse arrays of numbers and strings', () => {
-    expectParsesDeep([22, 'hello', 'test', 13, 'expect', 4])
+  it('can parse arrays of numbers, strings, and constants', () => {
+    expectParsesDeep([22, 'hello', 'test', true, 13, 'expect', false, 4])
   })
 
   it('can parse arrays with arrays', () => {

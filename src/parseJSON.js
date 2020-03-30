@@ -13,7 +13,10 @@ class Parser {
     if (this.remainder[0] === '"') {
       return this.parseNextString()
     }
-    return this.parseNextInt()
+    if (this.remainder[0].match(/\d/)) {
+      return this.parseNextInt()
+    }
+    return this.parseNextConstant()
   }
 
   parseNextArray() {
@@ -69,6 +72,21 @@ class Parser {
     const intString = this.remainder.match(/^\d+/)[0]
     this.remainder = this.remainder.slice(intString.length)
     return parseInt(intString)
+  }
+
+  parseNextConstant() {
+    if (this.remainder.slice(0, 4) === 'true') {
+      this.remainder = this.remainder.slice(4)
+      return true
+    }
+    if (this.remainder.slice(0, 5) === 'false') {
+      this.remainder = this.remainder.slice(5)
+      return false
+    }
+    if (this.remainder.slice(0, 4) === 'null') {
+      this.remainder = this.remainder.slice(4)
+      return null
+    }
   }
 
   parse() {
